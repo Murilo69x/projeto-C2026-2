@@ -1,40 +1,47 @@
 #include <stdio.h>
 
 int main() {
-    int idades[10];
-    int convite;
+int quantidades[8];
+    int essencial;
     int c;
 
-    int permitidas = 0;
-    int negadas = 0;
+    int urgente = 0;
+    int estoqueOk = 0;
 
-    int maiorIdade = 0;
+    int menorQuantidade = 99999;
 
-    for(c = 0; c < 10; c++){
-        printf("\nDigite a Idade da Pessoa %d: ", c + 1);
-        scanf("%d", &idades[c]);
-        printf("Possui Convite? [1/0]: ");
-        scanf("%d", &convite);
+    for(c = 0; c < 8; c++){
+        printf("\nDigite a Quantidade em Estoque do Produto %d: ", c + 1);
+        scanf("%d", &quantidades[c]);
+        printf("O Produto é Essencial? [1/0]: ");
+        scanf("%d", &essencial);
         
-        if(idades[c] >= 18 || convite == 1){
-            printf("ENTRADA PERMITIDA.\n");
-            permitidas++;
+        if(quantidades[c] < 10 && essencial == 1){
+            printf("REPOSIÇÃO URGENTE!\n");
+            urgente++;
         }
         else{
-            printf("ENTRADA NEGADA!\n");
-            negadas++;
+            printf("ESTOQUE OK.\n");
+            estoqueOk++;
         }
-        if(idades[c] > maiorIdade){
-            maiorIdade + idades[c];
+        
+        if(menorQuantidade > quantidades[c]){
+            menorQuantidade = quantidades[c];
         }
         else{
             
         }
-   }
+    }
     
-    printf("\nEntradas Permitidas: %d", permitidas);
-    printf("\nEntradas Negadas: %d", negadas);
-    printf("\nMaior Idade Registrada: %d", maiorIdade);
+    printf("\nREPOSIÇÃO URGENTE: %d", urgente);
+    printf("\nESTOQUE OK: %d", estoqueOk);
+    printf("\nMenor Quantidade Registrada: %d", menorQuantidade);
 
+
+    // p | q | p && q
+    // V | V | V
+    // V | F | F
+    // F | V | F
+    // F | F | F
     return 0;
 }
